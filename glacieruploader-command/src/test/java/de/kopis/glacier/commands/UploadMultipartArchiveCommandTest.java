@@ -33,6 +33,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.UUID;
 
 import org.junit.Test;
@@ -47,7 +48,7 @@ import joptsimple.OptionSet;
 public class UploadMultipartArchiveCommandTest extends AbstractCommandTest {
     @Test
     public void testExec() throws IOException {
-        final File tempFile = File.createTempFile("this is a test with whitespaces", ".txt");
+        final File tempFile = Files.createTempFile("this is a test with whitespaces", ".txt").toFile();
         tempFile.deleteOnExit();
         try(FileWriter fw = new FileWriter(tempFile)) {
             fw.write(UUID.randomUUID().toString());

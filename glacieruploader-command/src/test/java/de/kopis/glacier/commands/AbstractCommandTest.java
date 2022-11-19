@@ -27,6 +27,7 @@ import static org.easymock.EasyMock.createMock;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import org.apache.commons.configuration.CompositeConfiguration;
 import org.junit.Before;
@@ -52,7 +53,7 @@ public abstract class AbstractCommandTest {
     }
 
     protected static File writeTemporaryFile(final String content) throws IOException {
-        final File file = File.createTempFile("junit", ".txt");
+        final File file = Files.createTempFile("junit", ".txt").toFile();
         try(FileWriter fw = new FileWriter(file)) {
             fw.write(content);
         }
